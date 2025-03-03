@@ -13,7 +13,8 @@ import java.util.concurrent.TimeUnit;
 public class Naukriprofileupdate 
 {
         public static void NakuriChange() throws InterruptedException  {
-    	// Automatically setup ChromeDriver
+
+        
         WebDriverManager.chromedriver().setup();
         WebDriver driver =new ChromeDriver();
 

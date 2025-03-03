@@ -1,1 +1,7 @@
-/bin/
+target/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+.idea/

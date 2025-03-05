@@ -19,15 +19,15 @@ public class Naukriprofileupdate {
         
         // Setup Chrome options
         ChromeOptions options = new ChromeOptions();
-       // options.addArguments("--headless=new"); // Run Chrome in headless mode
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-features=TranslateUI");
-        //options.addArguments("--user-data-dir=D:/Personal/Naukri-Profile_Automation/chrome-profile");
+        options.addArguments("--headless=new"); // Run Chrome in headless mode
+//        options.addArguments("--remote-allow-origins=*");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--disable-gpu");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-extensions");
+//        options.addArguments("--disable-popup-blocking");
+//        options.addArguments("--disable-features=TranslateUI");
+//        //options.addArguments("--user-data-dir=D:/Personal/Naukri-Profile_Automation/chrome-profile");
         
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver(options);

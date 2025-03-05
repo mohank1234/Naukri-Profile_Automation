@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-03-03T16:58:31 IST" name="Default suite" finished-at="2025-03-03T16:59:15 IST" duration-ms="43315">
+  <suite started-at="2025-03-05T14:57:11 IST" name="Default suite" finished-at="2025-03-05T14:57:54 IST" duration-ms="43016">
     <groups>
     </groups>
-    <test started-at="2025-03-03T16:58:31 IST" name="Default test" finished-at="2025-03-03T16:59:15 IST" duration-ms="43315">
+    <test started-at="2025-03-05T14:57:11 IST" name="Default test" finished-at="2025-03-05T14:57:54 IST" duration-ms="43016">
       <class name="Tests.NakuriUpdateTest">
-        <test-method signature="Nakuriupdate()[pri:0, instance:Tests.NakuriUpdateTest@33d512c1]" started-at="2025-03-03T16:58:31 IST" name="Nakuriupdate" finished-at="2025-03-03T16:59:15 IST" duration-ms="43278" status="PASS">
+        <test-method signature="Nakuriupdate()[pri:0, instance:Tests.NakuriUpdateTest@33d512c1]" started-at="2025-03-05T14:57:11 IST" name="Nakuriupdate" finished-at="2025-03-05T14:57:54 IST" duration-ms="42965" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Nakuriupdate -->

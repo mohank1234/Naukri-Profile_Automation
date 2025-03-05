@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import java.util.concurrent.TimeUnit;
+  import java.util.concurrent.TimeUnit;
 
 public class Naukriprofileupdate 
 {
@@ -31,10 +31,10 @@ public class Naukriprofileupdate
             System.out.println("Got the login page");
 
             driver.findElement(By.xpath("//input[@placeholder='Enter your active Email ID / Username']"))
-                  .sendKeys("Username/Email");
+                  .sendKeys("krishnam.qaengineer@gmail.com");
             Thread.sleep(2000);
             driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
-                  .sendKeys("Password");
+                  .sendKeys("@Mohan@1");
             Thread.sleep(2000);
             driver.findElement(By.xpath("//button[text()='Login']")).click();
             Thread.sleep(5000);

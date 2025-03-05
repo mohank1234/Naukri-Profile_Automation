@@ -1,22 +1,36 @@
 package Pages;
 
-import org.apache.commons.logging.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-  import java.util.concurrent.TimeUnit;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
-public class Naukriprofileupdate 
-{
-        public static void NakuriChange() throws InterruptedException  {
-
+public class Naukriprofileupdate {
+    public static void NakuriChange() throws InterruptedException {
+        
+        // Setup Chrome options
+        ChromeOptions options = new ChromeOptions();
+       // options.addArguments("--headless=new"); // Run Chrome in headless mode
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--disable-features=TranslateUI");
+        //options.addArguments("--user-data-dir=D:/Personal/Naukri-Profile_Automation/chrome-profile");
         
         WebDriverManager.chromedriver().setup();
-        WebDriver driver =new ChromeDriver();
+        WebDriver driver = new ChromeDriver(options);
 
         try {
             // Browser settings
@@ -42,7 +56,7 @@ public class Naukriprofileupdate
             // Navigate to profile edit page
             driver.findElement(By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")).click();
             Thread.sleep(10000);
-            System.out.println("successfully logged into nakuri website");
+            System.out.println("Successfully logged into Naukri website");
 
             // Click on the edit option
             driver.findElement(By.xpath("//em[text()='editOneTheme']")).click();
@@ -52,7 +66,7 @@ public class Naukriprofileupdate
             WebElement nameField = driver.findElement(By.xpath("//input[@placeholder='Enter Your Name']"));
             String currentName = nameField.getAttribute("value");
 
-            System.out.println("started changing the name");
+            System.out.println("Started changing the name");
             
             // Toggle name value
             if (currentName.equals("Krishnna Mohan B")) {
@@ -66,9 +80,27 @@ public class Naukriprofileupdate
             // Save changes
             driver.findElement(By.id("saveBasicDetailsBtn")).click();
 
-            System.out.println("changed the name successfully");
+            System.out.println("Changed the name successfully");
             System.out.println("Profile name updated successfully!");
-
+            
+            //Logout
+            Thread.sleep(5000);
+             driver.findElement(By.xpath("//img[@alt='naukri user profile img']")).click();
+             
+             driver.findElement(By.xpath("//a[@data-type='logoutLink']")).click();
+             
+             By confrimlogout = By.xpath("//h1[text()='Find your dream job now']");
+             
+             WebDriverWait logout = new WebDriverWait(driver,Duration.ofSeconds(15));
+             WebElement loginField = logout.until(ExpectedConditions.visibilityOfElementLocated(confrimlogout)); // Replace with actual login field locator
+             
+             if (loginField.isDisplayed()) {
+            	    System.out.println("Logout successful!");
+            	} else {
+            	    System.out.println("Logout failed!");
+            	}
+              	
+             
         } finally {
             // Close the browser
             Thread.sleep(5000);

@@ -45,10 +45,10 @@ public class Naukriprofileupdate {
             System.out.println("Got the login page");
 
             driver.findElement(By.xpath("//input[@placeholder='Enter your active Email ID / Username']"))
-                  .sendKeys("krishnam.qaengineer@gmail.com");
+                  .sendKeys("Username")
             Thread.sleep(2000);
             driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
-                  .sendKeys("@Mohan@1");
+                  .sendKeys("password");
             Thread.sleep(2000);
             driver.findElement(By.xpath("//button[text()='Login']")).click();
             Thread.sleep(5000);

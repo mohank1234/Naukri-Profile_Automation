@@ -42,13 +42,19 @@ public class Naukriprofileupdate {
             driver.get("https://www.naukri.com/");
             driver.findElement(By.xpath("//a[@title='Jobseeker Login']")).click();
             Thread.sleep(5000);
-            System.out.println("Got the login page");
+            System. out.println("Got the login page");
 
+            // Get credentials from environment variables (GitHub Secrets or local system)
+            String username = System.getenv("NAUKRI_USERNAME");
+            String password = System.getenv("NAUKRI_PASSWORD");
+            
+            System. out.println("Got the credintailas");
+            
             driver.findElement(By.xpath("//input[@placeholder='Enter your active Email ID / Username']"))
-                  .sendKeys("Username")
+                  .sendKeys(username)
             Thread.sleep(2000);
             driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
-                  .sendKeys("password");
+                  .sendKeys(password);
             Thread.sleep(2000);
             driver.findElement(By.xpath("//button[text()='Login']")).click();
             Thread.sleep(5000);
@@ -66,7 +72,7 @@ public class Naukriprofileupdate {
             WebElement nameField = driver.findElement(By.xpath("//input[@placeholder='Enter Your Name']"));
             String currentName = nameField.getAttribute("value");
 
-            System.out.println("Started changing the name");
+            System. out.println("Started changing the name");
             
             // Toggle name value
             if (currentName.equals("Krishnna Mohan B")) {

@@ -2,7 +2,7 @@ name: Naukri Automation
 
 on:
   schedule:
-    - cron: "0,30 3-14 * * *" # Every 30 min between 9 AM–6 PM IST
+    - cron: "0,30 3-14 * * *" # Every 30 min between 9 AM–8 PM IST
   workflow_dispatch:
 
 jobs:

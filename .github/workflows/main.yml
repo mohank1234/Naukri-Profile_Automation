@@ -1,12 +1,8 @@
 name: Naukri Automation
 
-# on:
-#   schedule:
-#     - cron: "0,30 3-14 * * *" # Every 30 min between 9 AM–8 PM IST
-#   workflow_dispatch:
 on:
   schedule:
-    - cron: "*/2 * * * *" # Every 5 minutes UTC
+    - cron: "0,15 3-14 * * *" # Every 30 min between 9 AM–8 PM IST
   workflow_dispatch:
   
 jobs:

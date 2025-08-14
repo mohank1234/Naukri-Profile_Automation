@@ -51,7 +51,7 @@ public class Naukriprofileupdate {
             System. out.println("Got the credintailas");
             
             driver.findElement(By.xpath("//input[@placeholder='Enter your active Email ID / Username']"))
-                  .sendKeys(username)
+                  .sendKeys(username);
             Thread.sleep(2000);
             driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
                   .sendKeys(password);

@@ -10,7 +10,7 @@ public class NakuriUpdateTest
 	@BeforeTest
     public void setup() throws Exception {
         // Kill existing Chrome processes before starting the test
-        Runtime.getRuntime().exec("pkill -f chrome");
+       // Runtime.getRuntime().exec("pkill -f chrome");
         Thread.sleep(2000); // Small delay to ensure process is killed
     }
 

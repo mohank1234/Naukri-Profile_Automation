@@ -5,10 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.net.UrlChecker.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import dev.failsafe.Timeout;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.time.Duration;
@@ -19,7 +21,7 @@ public class Naukriprofileupdate {
         
         // Setup Chrome options
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // Run Chrome in headless mode
+    //    options.addArguments("--headless=new"); // Run Chrome in headless mode
 //        options.addArguments("--remote-allow-origins=*");
 //        options.addArguments("--disable-dev-shm-usage");
 //        options.addArguments("--disable-gpu");
@@ -45,18 +47,30 @@ public class Naukriprofileupdate {
             System.out.println("Got the login page");
 
             driver.findElement(By.xpath("//input[@placeholder='Enter your active Email ID / Username']"))
-                  .sendKeys("krishnam.qaengineer@gmail.com");
+                  .sendKeys("Username/email");
             Thread.sleep(2000);
             driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
-                  .sendKeys("@Mohan@1");
+                  .sendKeys("password");
             Thread.sleep(2000);
             driver.findElement(By.xpath("//button[text()='Login']")).click();
             Thread.sleep(5000);
-
+ 
+            //close the side popup
+            
+            
             // Navigate to profile edit page
-            driver.findElement(By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")).click();
-            Thread.sleep(10000);
-            System.out.println("Successfully logged into Naukri website");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	         // Wait until the element is clickable
+	         WebElement profileLink = wait.until(ExpectedConditions.elementToBeClickable(
+	             By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")
+	         ));
+	         // Click the element
+	         profileLink.click();
+	         // Wait for demonstration purposes (not recommended in real automation)
+	         Thread.sleep(10000);
+	         System.out.println("Successfully logged into Naukri website");
+
 
             // Click on the edit option
             driver.findElement(By.xpath("//em[text()='editOneTheme']")).click();
@@ -65,23 +79,28 @@ public class Naukriprofileupdate {
             // Locate the name input field
             WebElement nameField = driver.findElement(By.xpath("//input[@placeholder='Enter Your Name']"));
             String currentName = nameField.getAttribute("value");
-
+            System.out.println("printing the name before changing:"+currentName);
             System.out.println("Started changing the name");
             
             // Toggle name value
             if (currentName.equals("Krishnna Mohan B")) {
                 nameField.clear();
+                System.out.println("Cleared the name");
                 nameField.sendKeys("Krishnna Mohan Batthini");
             } else if (currentName.equals("Krishnna Mohan Batthini")) {
                 nameField.clear();
+                System.out.println("Cleared the name");
                 nameField.sendKeys("Krishnna Mohan B");
             }
-
+            
             // Save changes
             driver.findElement(By.id("saveBasicDetailsBtn")).click();
 
             System.out.println("Changed the name successfully");
             System.out.println("Profile name updated successfully!");
+            String afterChangingName = nameField.getAttribute("value");
+            System.out.println("printing the name after changing:"+afterChangingName);
+            System.out.println("changed the name successfully");
             
             //Logout
             Thread.sleep(5000);

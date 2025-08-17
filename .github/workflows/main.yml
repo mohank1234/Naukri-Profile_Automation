@@ -53,8 +53,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: headless_debug.png
+          path: |
+            screenshot_*.png
           if-no-files-found: warn
           compression-level: 6
           overwrite: true
           include-hidden-files: false
+

@@ -19,7 +19,7 @@ public class Naukriprofileupdate {
         
         // Setup Chrome options
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // Run Chrome in headless mode
+        //options.addArguments("--headless=new"); // Run Chrome in headless mode
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");

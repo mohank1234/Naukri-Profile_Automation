@@ -91,10 +91,16 @@ public class Naukriprofileupdate {
     File src1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
     Files.copy(src1.toPath(), Paths.get("screenshot_login.png"), StandardCopyOption.REPLACE_EXISTING);
 
-    // Navigate to profile edit page
-    WebElement profileLink = wait.until(ExpectedConditions.elementToBeClickable(
-        By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")
-    ));
+    // // Navigate to profile edit page
+    // WebElement profileLink = wait.until(ExpectedConditions.elementToBeClickable(
+    //     By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")
+    // ));
+	WebElement profileLink = wait.until(
+        ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")
+			    System.out.println("able to see the porifle");
+        )
+    );
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", profileLink);
     profileLink.click();
     System.out.println("Successfully logged into Naukri website");

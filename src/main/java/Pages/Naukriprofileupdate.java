@@ -91,9 +91,14 @@ public class Naukriprofileupdate {
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Login']"))).click();
     System.out.println("Login done");
 
-    // Take screenshot after login
+    // Take a screenshot after login
+    // File src1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+    // Files.copy(src1.toPath(), Paths.get("screenshot_login.png"), StandardCopyOption.REPLACE_EXISTING);
     File src1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-    Files.copy(src1.toPath(), Paths.get("screenshot_login.png"), StandardCopyOption.REPLACE_EXISTING);
+	Path dest = Paths.get("target/screenshots/screenshot_login.png");
+	Files.createDirectories(dest.getParent());
+	Files.copy(src1.toPath(), dest, StandardCopyOption.REPLACE_EXISTING);
+
 		  
 // // Navigate to profile edit page
 	WebElement profileLink = wait.until(

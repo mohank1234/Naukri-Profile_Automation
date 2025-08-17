@@ -61,7 +61,6 @@ public class Naukriprofileupdate {
       try {
     // Browser settings
     driver.manage().deleteAllCookies();
-    driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     // Open Naukri and login
@@ -69,7 +68,10 @@ public class Naukriprofileupdate {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     // Click Login
-    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Jobseeker Login']"))).click();
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	WebElement loginBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='Jobseeker Login']")));
+	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginBtn);
+	wait.until(ExpectedConditions.elementToBeClickable(loginBtn)).click();
     System.out.println("Got the login page");
 
     // Get credentials from environment variables (GitHub Secrets or local system)

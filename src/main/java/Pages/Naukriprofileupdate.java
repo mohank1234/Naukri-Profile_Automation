@@ -145,4 +145,6 @@ public class Naukriprofileupdate {
     Thread.sleep(5000);
     System.out.println("Update done");
     driver.quit();
+  }
+ }
 }

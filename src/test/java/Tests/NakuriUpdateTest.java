@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import Pages.Naukriprofileupdate;   // import your page class
 
-public class NakuriUpdateTest {
+public class NakuriUpdateTest extends BaseTest {
 
     @BeforeTest
     public void setup() throws Exception {

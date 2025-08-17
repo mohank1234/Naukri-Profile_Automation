@@ -85,6 +85,9 @@ public class Naukriprofileupdate {
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Enter your password']")))
         .sendKeys(password);
 
+	System.out.println("Username length: " + (username == null ? "null" : username.length()));
+    System.out.println("Password length: " + (password == null ? "null" : password.length()));
+
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Login']"))).click();
     System.out.println("Login done");
 

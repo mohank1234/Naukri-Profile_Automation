@@ -5,14 +5,13 @@ on:
     - cron: "0,15 2-15 * * *" # Every 30 min between 9 AM–8 PM IST
   workflow_dispatch:
 
-# on:
-#   schedule:
-#     - cron: "0,15 1-14 * * 1-6" # Every 15th minute between 9 AM–8 PM IST, Mon–Sat
-#   workflow_dispatch:
-
 jobs:
   run-automation:
     runs-on: ubuntu-latest
+
+    env:   # ✅ Correct scope (job-level)
+      NAUKRI_USERNAME: ${{ secrets.NAUKRI_USERNAME }}
+      NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
 
     steps:
       - name: Checkout code
@@ -35,12 +34,8 @@ jobs:
       - name: Install dependencies
         run: mvn install -DskipTests
 
-      # - name: Run Selenium Test
-      #   run: mvn test
-
       - name: Run Selenium Test
         run: mvn test --batch-mode -Dsurefire.useFile=false
-
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4

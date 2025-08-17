@@ -68,7 +68,6 @@ public class Naukriprofileupdate {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     // Click Login
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	WebElement loginBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='Jobseeker Login']")));
 	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginBtn);
 	wait.until(ExpectedConditions.elementToBeClickable(loginBtn)).click();

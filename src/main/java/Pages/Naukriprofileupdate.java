@@ -82,7 +82,8 @@ public class Naukriprofileupdate {
             Thread.sleep(2000);
             driver.findElement(By.xpath("//button[text()='Login']")).click();
             Thread.sleep(5000);
- 
+			System.out.println("Login done");
+  
             //close the side popup
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Files.copy(src.toPath(), Paths.get("headless_debug.png"), StandardCopyOption.REPLACE_EXISTING);

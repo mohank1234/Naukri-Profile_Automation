@@ -96,8 +96,11 @@ public class Naukriprofileupdate {
     // Files.copy(src1.toPath(), Paths.get("screenshot_login.png"), StandardCopyOption.REPLACE_EXISTING);
     File src1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	Path dest = Paths.get("target/screenshots/screenshot_login.png");
-	Files.createDirectories(dest.getParent());
+	Files.createDirectories(dest.getParent()); // make folder if not exists
 	Files.copy(src1.toPath(), dest, StandardCopyOption.REPLACE_EXISTING);
+
+System.out.println("Screenshot saved at: " + dest.toAbsolutePath());
+
 
 		  
 // // Navigate to profile edit page

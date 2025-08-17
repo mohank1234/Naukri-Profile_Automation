@@ -46,6 +46,8 @@ public class Naukriprofileupdate {
     	options.addArguments("--disable-gpu");
     	options.addArguments("--remote-allow-origins=*");
 
+
+		
     	// Optional: disable unnecessary features
     	options.addArguments("--disable-extensions");
     	options.addArguments("--disable-popup-blocking");

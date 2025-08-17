@@ -33,7 +33,7 @@ public class Naukriprofileupdate {
     	ChromeOptions options = new ChromeOptions();
 
     	// Run in headless mode (modern headless)
-    	//options.addArguments("--headless=new");
+    	options.addArguments("--headless=new");
 
     	// Make viewport big enough so elements are visible
     	options.addArguments("--window-size=1920,1080");

@@ -33,19 +33,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # ✅ Add this step right here
       - name: Install Chrome dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             libnss3 \
             libxss1 \
-            libasound2 \
+            libasound2t64 \
             fonts-liberation \
             libatk-bridge2.0-0 \
             libgtk-3-0 \
             libgbm1 \
             libxshmfence1
+
 
       - name: Install dependencies
         run: mvn install -DskipTests

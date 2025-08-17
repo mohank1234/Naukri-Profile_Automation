@@ -66,9 +66,9 @@ public class Naukriprofileupdate {
             driver.get("https://www.naukri.com/");
             driver.findElement(By.xpath("//a[@title='Jobseeker Login']")).click();
             Thread.sleep(5000);
-            System. out.println("Got the login page");
-
-            // Get credentials from environment variables (GitHub Secrets or local system)
+            System.out.println("Got the login page");
+            
+           // Get credentials from environment variables (GitHub Secrets or local system)
             String username = System.getenv("NAUKRI_USERNAME");
             String password = System.getenv("NAUKRI_PASSWORD");
             
@@ -82,15 +82,25 @@ public class Naukriprofileupdate {
             Thread.sleep(2000);
             driver.findElement(By.xpath("//button[text()='Login']")).click();
             Thread.sleep(5000);
-
+ 
             //close the side popup
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Files.copy(src.toPath(), Paths.get("headless_debug.png"), StandardCopyOption.REPLACE_EXISTING);
 
+            
             // Navigate to profile edit page
-            driver.findElement(By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")).click();
-            Thread.sleep(10000);
-            System.out.println("Successfully logged into Naukri website");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	         // Wait until the element is clickable
+	         WebElement profileLink = wait.until(ExpectedConditions.elementToBeClickable(
+	             By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")
+	         ));
+	         // Click the element
+	         profileLink.click();
+	         // Wait for demonstration purposes (not recommended in real automation)
+	         Thread.sleep(10000);
+	         System.out.println("Successfully logged into Naukri website");
+
 
             // Click on the edit option
             driver.findElement(By.xpath("//em[text()='editOneTheme']")).click();
@@ -99,47 +109,34 @@ public class Naukriprofileupdate {
             // Locate the name input field
             WebElement nameField = driver.findElement(By.xpath("//input[@placeholder='Enter Your Name']"));
             String currentName = nameField.getAttribute("value");
-
-            System. out.println("Started changing the name");
+            System.out.println("printing the name before changing:"+currentName);
+            System.out.println("Started changing the name");
             
             // Toggle name value
             if (currentName.equals("Krishnna Mohan B")) {
                 nameField.clear();
+                System.out.println("Cleared the name");
                 nameField.sendKeys("Krishnna Mohan Batthini");
             } else if (currentName.equals("Krishnna Mohan Batthini")) {
                 nameField.clear();
+                System.out.println("Cleared the name");
                 nameField.sendKeys("Krishnna Mohan B");
             }
-
+            
             // Save changes
             driver.findElement(By.id("saveBasicDetailsBtn")).click();
 
             System.out.println("Changed the name successfully");
             System.out.println("Profile name updated successfully!");
-            
-            //Logout
-            // Thread.sleep(5000);
-            //  driver.findElement(By.xpath("//img[@alt='naukri user profile img']")).click();
-             
-            //  driver.findElement(By.xpath("//a[@data-type='logoutLink']")).click();
-             
-            //  By confrimlogout = By.xpath("//h1[text()='Find your dream job now']");
-             
-            //  WebDriverWait logout = new WebDriverWait(driver,Duration.ofSeconds(15));
-            //  WebElement loginField = logout.until(ExpectedConditions.visibilityOfElementLocated(confrimlogout)); // Replace with actual login field locator
-             
-            //  if (loginField.isDisplayed()) {
-            // 	    System.out.println("Logout successful!");
-            // 	} else {
-            // 	    System.out.println("Logout failed!");
-            // 	}
-             
+            String afterChangingName = nameField.getAttribute("value");
+            System.out.println("printing the name after changing:"+afterChangingName);
+            System.out.println("changed the name successfully");
+                          	
         } finally {
             // Close the browser
             Thread.sleep(5000);
             System.out.println("Update done");
             driver.quit();
-        }
         }
     }
 }

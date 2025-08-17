@@ -90,7 +90,7 @@ public class Naukriprofileupdate {
 
             
             // Navigate to profile edit page
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 	         // Wait until the element is clickable
 	         WebElement profileLink = wait.until(ExpectedConditions.elementToBeClickable(

@@ -106,8 +106,7 @@ public class Naukriprofileupdate {
 	
 // 	System.out.println("🎉 Successfully logged into Naukri website");
 
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-WebElement profileLink = wait.until(ExpectedConditions.or(
+    WebElement profileLink = wait.until(ExpectedConditions.or(
     ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")),
     ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'View Profile')]"))
 ));

@@ -43,9 +43,13 @@ jobs:
           name: test-reports
           path: target/surefire-reports/
 
-      - name: Upload Screenshots   # ✅ now at correct level
+      -       - name: Upload Screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: target/*.png
+          path: headless_debug.png
+          if-no-files-found: warn
+          compression-level: 6
+          overwrite: true     # ✅ allows overwriting artifacts from previous runs
+          include-hidden-files: false

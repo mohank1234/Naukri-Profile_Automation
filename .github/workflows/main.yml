@@ -65,8 +65,11 @@ jobs:
         with:
           name: screenshots
           path: |
-            screenshot_*.png
+            target/screenshots/
           if-no-files-found: warn
-          compression-level: 6
-          overwrite: true
-          include-hidden-files: false
+
+      - name: Debug files
+        if: always()
+        run: ls -R
+
+

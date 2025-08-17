@@ -9,7 +9,7 @@ jobs:
   run-automation:
     runs-on: ubuntu-latest
 
-    env:   # ✅ Correct scope (job-level)
+    env:
       NAUKRI_USERNAME: ${{ secrets.NAUKRI_USERNAME }}
       NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
 
@@ -42,3 +42,10 @@ jobs:
         with:
           name: test-reports
           path: target/surefire-reports/
+
+      - name: Upload Screenshots   # ✅ now at correct level
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: target/*.png

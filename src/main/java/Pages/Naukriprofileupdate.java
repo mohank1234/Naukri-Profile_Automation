@@ -91,19 +91,26 @@ public class Naukriprofileupdate {
     // Take screenshot after login
     File src1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
     Files.copy(src1.toPath(), Paths.get("screenshot_login.png"), StandardCopyOption.REPLACE_EXISTING);
-// Navigate to profile edit page
-	WebElement profileLink = wait.until(
-	ExpectedConditions.visibilityOfElementLocated(
-	By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")
-	)
-	);
+		  
+// // Navigate to profile edit page
+// 	WebElement profileLink = wait.until(
+// 	ExpectedConditions.visibilityOfElementLocated(
+// 	By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")
+// 	)
+// 	);
 	
-	System.out.println("✅ Able to see the profile link");
+// 	System.out.println("✅ Able to see the profile link");
 	
-	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", profileLink);
-	profileLink.click();
+// 	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", profileLink);
+// 	profileLink.click();
 	
-	System.out.println("🎉 Successfully logged into Naukri website");
+// 	System.out.println("🎉 Successfully logged into Naukri website");
+
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+WebElement profileLink = wait.until(ExpectedConditions.or(
+    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='view-profile-wrapper']//a[@href='/mnjuser/profile']")),
+    ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'View Profile')]"))
+));
 
 
     // Screenshot after navigating to profile

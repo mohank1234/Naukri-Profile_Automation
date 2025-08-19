@@ -110,14 +110,14 @@ public class Naukriprofileupdate {
 
 System.out.println("Screenshot saved at: " + dest.toAbsolutePath());
 
-		   boolean isDisplayed = driver.findElement(By.partialLinkText("Krishnna Mohan Batthini")).isDisplayed();
-            if(isDisplayed)
-            {
-            	System.out.println("login is sucess");
-            }else
-            {
-            	System.out.println("login is failed");
-            }
+		   // boolean isDisplayed = driver.findElement(By.partialLinkText("Krishnna Mohan Batthini")).isDisplayed();
+     //        if(isDisplayed)
+     //        {
+     //        	System.out.println("login is sucess");
+     //        }else
+     //        {
+     //        	System.out.println("login is failed");
+     //        }
 
 		  
 // // Navigate to profile edit page

@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import Pages.CookieLoader;
 
 public class Naukriprofileupdate {
     public static void NakuriChange() throws InterruptedException, IOException {

@@ -13,7 +13,7 @@ public class CookieLoader {
 
     public static void loadCookies(WebDriver driver) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
-        JSONArray cookies = (JSONArray) parser.parse(new FileReader("src/test/resources/cookies.json"));
+        JSONArray cookies = (JSONArray) parser.parse(new FileReader("src/cookies.json"));
 
         for (Object obj : cookies) {
             JSONObject jsonObject = (JSONObject) obj;
@@ -37,3 +37,4 @@ public class CookieLoader {
         }
     }
 }
+

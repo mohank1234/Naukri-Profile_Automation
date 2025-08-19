@@ -60,8 +60,16 @@ public class Naukriprofileupdate {
 
       try {
     // Browser settings
-    driver.manage().deleteAllCookies();
     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	// Step 2: Load cookies
+	try {
+		CookieLoader.loadCookies(driver);
+		driver.navigate().refresh();
+		System.out.println("✅ Logged in using cookies");
+	} catch (Exception e) {
+		System.out.println("⚠️ Could not load cookies, falling back to normal login.");
+		// here you can call your existing login steps
+	}
 
     // Open Naukri and login
     driver.get("https://www.naukri.com/");
